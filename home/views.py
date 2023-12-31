@@ -9,17 +9,17 @@ from django.db.models import Q
 
 
 
-# def check_booking(start_date  , end_date ,uid , room_count):
-#     qs = HotelBooking.objects.filter(
-#         start_date__lte=start_date,
-#         end_date__gte=end_date,
-#         hotel__uid = uid
-#         )
+def check_booking(start_date  , end_date ,uid , room_count):
+    qs = HotelBooking.objects.filter(
+        start_date__lte=start_date,
+        end_date__gte=end_date,
+        hotel__uid = uid
+        )
     
-#     if len(qs) >= room_count:
-#         return False
+    if len(qs) >= room_count:
+        return False
     
-#     return True
+    return True
     
 def home(request):
     amenities_objs = Amenities.objects.all()

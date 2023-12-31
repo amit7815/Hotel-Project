@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    # path('check_booking/' , check_booking),
+    path('check_booking/' , check_booking),
     path('', home , name='home'),
     path('hotel-detail/<uid>/' , hotel_detail , name="hotel_detail"),
     path('login/', login_page , name='login_page'),
