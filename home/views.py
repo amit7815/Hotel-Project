@@ -52,29 +52,29 @@ def home(request):
 
 
 
-# def hotel_detail(request,uid):
-#     hotel_obj = Hotel.objects.get(uid = uid)
+def hotel_detail(request,uid):
+    hotel_obj = Hotel.objects.get(uid = uid)
 
-#     if request.method == 'POST':
-#         checkin = request.POST.get('checkin')
-#         checkout= request.POST.get('checkout')
-#         hotel = Hotel.objects.get(uid = uid)
-#         if not check_booking(checkin ,checkout  , uid , hotel.room_count):
-#             messages.warning(request, 'Hotel is already booked in these dates ')
-#             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    if request.method == 'POST':
+        checkin = request.POST.get('checkin')
+        checkout= request.POST.get('checkout')
+        hotel = Hotel.objects.get(uid = uid)
+        if not check_booking(checkin ,checkout  , uid , hotel.room_count):
+            messages.warning(request, 'Hotel is already booked in these dates ')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-#         HotelBooking.objects.create(hotel=hotel , user = request.user , start_date=checkin
-#         , end_date = checkout , booking_type  = 'Pre Paid')
+        HotelBooking.objects.create(hotel=hotel , user = request.user , start_date=checkin
+        , end_date = checkout , booking_type  = 'Pre Paid')
         
-#         messages.success(request, 'Your booking has been saved')
-#         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        messages.success(request, 'Your booking has been saved')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
 
         
     
-#     return render(request , 'hotel_detail.html' ,{
-#         'hotels_obj' :hotel_obj
-#     })
+    return render(request , 'hotel_detail.html' ,{
+        'hotels_obj' :hotel_obj
+    })
 
 def login_page(request):
     if request.method == 'POST':
